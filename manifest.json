@@ -1,0 +1,68 @@
+{
+	"version": "0.1",
+	"files": [
+		{
+			"src": "classes/type.page.class.php",
+			"dest": "classes/items/type.page.class.php",
+			"digest": "sha256:0d36ade9943097f754a71bca98b223d9895dcef578c57f9da7f7d5d987dfda26"
+		},
+		{
+			"src": "www/janitor/page.php",
+			"dest": "www/janitor/page.php",
+			"digest": "sha256:8690d95fd400a6a6a43c35803cd9ae6da5c5ed8b50294f9bce3466be320ff791"
+		},
+		{
+			"src": "templates/janitor/page/list.php",
+			"dest": "templates/janitor/page/list.php",
+			"digest": "sha256:5208461c39f7eb7db163361c3d15bb694add6d96025f2042b7673bfc81b90c0a"
+		},
+		{
+			"src": "templates/janitor/page/edit.php",
+			"dest": "templates/janitor/page/edit.php",
+			"digest": "sha256:c8789d76b68786b97b889512f5f965c7ebef36b57ecfe9b1e7db1231db94dc51"
+		},
+		{
+			"src": "templates/janitor/page/new.php",
+			"dest": "templates/janitor/page/new.php",
+			"digest": "sha256:0bf2c0bcec75419b512c543a20d4bf6928a7bcfc4e6b90c4fa918fc75184f8ea"
+		},
+		{
+			"src": "www/settings/css/s-page.css",
+			"dest": "www/janitor/css/setup/modules/s-page.css",
+			"digest": "sha256:0b77d0a78874f99f56d0532a9c1b20616eae788d53a490b3fe704592bcdecafe"
+		},
+		{
+			"src": "www/settings/js/m-page.js",
+			"dest": "www/janitor/js/setup/modules/m-page.js",
+			"digest": "sha256:d647f5319c0d62c4a56031e3c82635207a56ef607bd7dea7b96bf719f04530dd"
+		},
+		{
+			"src": "templates/settings/index.php",
+			"dest": "templates/janitor/modules/item/page/index.php",
+			"digest": "sha256:fa93bc78b8c14a256e7e08a42d3cb00f867941ea8b1f69e62d9a6ae6a39b3d4c"
+		},
+		{
+			"src": "www/pages.php",
+			"dest": "www/pages.php",
+			"digest": "sha256:0ca8935bae099022e06374d5ba8150f90922d6737e287e594236ac127cff88cd"
+		},
+		{
+			"src": "templates/pages/view.php",
+			"dest": "templates/pages/view.php",
+			"digest": "sha256:c27145cac906ee6201bf0137954dc7616cfd192ad4d56a9ea9130a112459c8a9"
+		}
+	],
+	"data": {
+		"install": [
+			"config/db/navigation_nodes.sql",
+			"config/db/item_page.sql"
+		],
+		"uninstall": [
+			"config/db/navigation_nodes_uninstall.sql"
+		],
+		"uninstall-data": [
+			"config/db/item_page_data_uninstall.sql",
+			"config/db/item_page_uninstall.sql"
+		]
+	}
+}
