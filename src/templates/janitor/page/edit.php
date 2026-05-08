@@ -39,6 +39,8 @@ $item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "
 
 	<?= $JML->editMediae($item) ?>
 
+	<?= $JML->editDeveloper($item) ?>
+
 	<?= $JML->editComments($item) ?>
 
 	<?= $JML->editSindex($item) ?>

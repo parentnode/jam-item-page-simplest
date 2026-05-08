@@ -1,12 +1,26 @@
 <?php
-global $IC;
 global $action;
-global $itemtype;
+
+$IC = new Items();
+$itemtype = "page";
 
 $sindex = $action[0];
 
-$item = $IC->getItem(array("sindex" => $sindex, "status" => 1, "extend" => array("tags" => true, "user" => true, "mediae" => true, "comments" => true, "readstate" => true)));
+$item = $IC->getItem([
+	"sindex" => $sindex, 
+	"status" => 1, 
+	"extend" => [
+		"tags" => true, 
+		"user" => true, 
+		"mediae" => true, 
+		"comments" => true, 
+		"readstate" => true
+	]
+]);
+
 if($item) {
+	$this->pageTitle($item["name"])
+	$page->bodyClass($item["classname"] || "pages");
 	$this->sharingMetaData($item);
 }
 
@@ -30,7 +44,8 @@ if($item) {
 		<? endif; ?>
 
 
-		<?= $HTML->articleTags($item, [
+		<?= HTML()->renderSnippet("snippets/tags.php", [
+			"item" => $item,
 			"context" => ["page"]
 		]) ?>
 
@@ -38,10 +53,18 @@ if($item) {
 		<h1 itemprop="headline"><?= $item["name"] ?></h1>
 
 
-		<?= $HTML->articleInfo($item, "/pages/".$item["sindex"], [
+		<?= $HTML->renderSnippet("snippets/info.php", [
+			"item" => $item,
+
+			// TODO
+			// Make dynamic somehow – if controller is not called pages, then what
+
+			// – and if there are more pages controllers, how can cannonical url become unique
+			"url" => "/pages/".$item["sindex"],
 			"media" => $media,
 			"sharing" => true
 		]) ?>
+
 
 
 		<div class="articlebody" itemprop="articleBody">
@@ -53,17 +76,12 @@ if($item) {
 
 	</div>
 
-
 <? else: ?>
 
-
-	<h1>Technology clearly doesn't solve everything on it's own.</h1>
+	<h1>Technology clearly doesn't solve all problems.</h1>
 	<h2>Technology needs humanity.</h2>
 	<p>We could not find the specified service.</p>
 
-
 <? endif; ?>
-
-
 
 </div>

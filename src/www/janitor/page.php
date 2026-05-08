@@ -1,15 +1,25 @@
 <?php
+$itemtype = "page";
+
 $access_item["/"] = true;
 $access_item["/owner"] = true;
 $access_item["/updateOwner"] = "/owner";
+
 $access_item["/comments"] = true;
 $access_item["/addComment"] = "/comments";
+
 $access_item["/sindex"] = true;
 $access_item["/updateSindex"] = "/sindex";
+$access_item["/checkSindex"] = "/sindex";
+
 $access_item["/tags"] = true;
 $access_item["/addTag"] = "/tags";
 $access_item["/updateTag"] = "/tags";
 $access_item["/deleteTag"] = "/tags";
+
+$access_item["/dev"] = true;
+$access_item["/updateSindex"] = "/sindex";
+
 if(isset($read_access) && $read_access) {
 	return;
 }
@@ -19,7 +29,6 @@ include_once($_SERVER["FRAMEWORK_PATH"]."/config/init.php");
 
 $action = $page->actions();
 $IC = new Items();
-$itemtype = "page";
 $model = $IC->typeObject($itemtype);
 
 
