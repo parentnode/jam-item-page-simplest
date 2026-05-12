@@ -1,85 +1,90 @@
 {
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"files": [
 		{
+			"type": "class",
 			"src": "classes/type.page.class.php",
 			"dest": "classes/items/type.page.class.php",
 			"digest": "sha256:555b0309af048553c364fc98f3480753f043f7a5bc755f34e877ec6a6aadd803"
 		},
 		{
+			"type": "backend-controller",
 			"src": "www/janitor/page.php",
 			"dest": "www/janitor/page.php",
 			"digest": "sha256:60a77725225385cb933e9a75f66ce82293aa9cb4a816e218ddea12e5b5f7c26b"
 		},
 		{
+			"type": "backend-template",
 			"src": "templates/janitor/page/list.php",
 			"dest": "templates/janitor/page/list.php",
 			"digest": "sha256:f04b9696b8e92f4a8b0df9331dd7f00b4b125b4258b680dd6fe485e0c0fc068a"
 		},
 		{
+			"type": "backend-template",
 			"src": "templates/janitor/page/edit.php",
 			"dest": "templates/janitor/page/edit.php",
 			"digest": "sha256:68550d10ddf643c9fde80ee45faa68df51a85d6014f281f81f7b41a8a954af7b"
 		},
 		{
+			"type": "backend-template",
 			"src": "templates/janitor/page/new.php",
 			"dest": "templates/janitor/page/new.php",
 			"digest": "sha256:68e5f8ae888c455cc5a564340d617de0a053c64680a0035a2875b4bbff608216"
 		},
 		{
-			"src": "www/settings/css/s-page.css",
-			"dest": "www/janitor/css/setup/modules/s-page.css",
-			"digest": "sha256:771ec77d396c0dcce44cbb322dc0c438d747338fcc7561a33bf30c1c00a869e6"
+			"type": "settings-css",
+			"src": "www/settings/css/s-pageitem.css",
+			"dest": "www/janitor/css/setup/modules/s-pageitem.css",
+			"digest": "sha256:3ae843824ac8108b4375e464b9b6694dbbbdb9c812118e26a1fe46ea49bfa97c"
 		},
 		{
-			"src": "www/settings/js/m-page.js",
-			"dest": "www/janitor/js/setup/modules/m-page.js",
-			"digest": "sha256:049accccac94b05ac530a7c22318941e732e33733b0ded028e5461425d3f32d6"
+			"type": "settings-js",
+			"src": "www/settings/js/m-pageitem.js",
+			"dest": "www/janitor/js/setup/modules/m-pageitem.js",
+			"digest": "sha256:667f56e7ed3e2b52769b0f3cfde94dcb96be7c99a260e53de2756ef19aa8fc6e"
 		},
 		{
+			"type": "settings-template",
 			"src": "templates/settings/index.php",
 			"dest": "templates/janitor/modules/item/page/index.php",
-			"digest": "sha256:875186e07080900c9f6695bf323173c5d30e35415f604b01f18845d286efe010"
+			"digest": "sha256:27b7aa5840caa2e10f23c1b83c9a4f38f2dbf03b055552220f147cf3f37fe45c"
 		},
 		{
+			"type": "controller",
 			"src": "www/pages.php",
 			"dest": "www/pages.php",
 			"digest": "sha256:9b322e6643281b40ba395fc790cfedfda2e833602ac7067b1741b395a1ca0556"
 		},
 		{
+			"type": "template",
 			"src": "templates/pages/view.php",
 			"dest": "templates/pages/view.php",
 			"digest": "sha256:772e5dd8bdf9660be0ec010c9254cfabde16ccdae008c466418018494bfe4917"
+		},
+		{
+			"type": "data-model",
+			"src": "config/db/item_page.sql",
+			"digest": "sha256:e5e47341b0d567dfbccdbd87d3ee34028ef98a17ef03b2b8adeabc5af218af78"
+		},
+		{
+			"type": "data-install",
+			"src": "config/db/navigation_nodes.sql",
+			"digest": "sha256:6e3cad99b46acfd4c556f53264a92b6f581885d5157bf226b145eadee342b0a8"
+		},
+		{
+			"type": "data-uninstall",
+			"src": "config/db/navigation_nodes_uninstall.sql",
+			"digest": "sha256:be3752ef6f7daefe7ca0bfc5deeaad102d31ff378063b2fb88ca9e3c87fe4b6c"
+		},
+		{
+			"type": "data-uninstall-all",
+			"src": "config/db/item_page_data_uninstall.sql",
+			"digest": "sha256:26abddc868a198f150c5a1e0dcf5e17e124de86c15f7d90eb2c70497ef350873"
+		},
+		{
+			"type": "data-uninstall-all",
+			"src": "config/db/item_page_uninstall.sql",
+			"digest": "sha256:270d6a8d70dda602633326f41122fa59630e707e9fa813c4f147526d9cad7674"
 		}
-	],
-	"data": {
-		"model": [
-			{
-				"src": "config/db/item_page.sql",
-				"digest": "sha256:e5e47341b0d567dfbccdbd87d3ee34028ef98a17ef03b2b8adeabc5af218af78"
-			}
-		],
-		"install": [
-			{
-				"src": "config/db/navigation_nodes.sql",
-				"digest": "sha256:6e3cad99b46acfd4c556f53264a92b6f581885d5157bf226b145eadee342b0a8"
-			}
-		],
-		"uninstall": [
-			{
-				"src": "config/db/navigation_nodes_uninstall.sql",
-				"digest": "sha256:be3752ef6f7daefe7ca0bfc5deeaad102d31ff378063b2fb88ca9e3c87fe4b6c"
-			}
-		],
-		"uninstall-data": [
-			{
-				"src": "config/db/item_page_data_uninstall.sql",
-				"digest": "sha256:26abddc868a198f150c5a1e0dcf5e17e124de86c15f7d90eb2c70497ef350873"
-			},
-			{
-				"src": "config/db/item_page_uninstall.sql",
-				"digest": "sha256:270d6a8d70dda602633326f41122fa59630e707e9fa813c4f147526d9cad7674"
-			}
-		]
-	}
+	]
 }

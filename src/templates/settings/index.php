@@ -4,31 +4,29 @@ global $module_id;
 
 $module = module()->getModule($module_group_id, $module_id);
 
-$IC = new Items();
-$module_class = $IC->typeObject("page");
+// $IC = new Items();
+// $module_class = $IC->typeObject("page");
 
+
+$page_controllers = module()->getItemControllers($module_id);
 
 //
-$default_controller = "/pages.php";
-
-
-
-$all_controllers = $fs->files(LOCAL_PATH."/www", [
-	"deny_folders" => "janitor,js,img,assets", 
-	"allow_extensions" => "php"
-]);
-$page_controllers = [];
-
-	// TODO: delete any modified controllers
-	debug(["possible modified controllers", $controllers]);
-
-foreach($all_controllers as $controller) {
-	$read_access = true;
-	include($controller);
-	if(isset($itemtype) && $itemtype === "page") {
-		$page_controllers[] = str_replace(LOCAL_PATH."/www", "", $controller);
-	}
-}
+// $all_controllers = filesystem()->files(LOCAL_PATH."/www", [
+// 	"deny_folders" => "janitor,js,img,assets",
+// 	"allow_extensions" => "php"
+// ]);
+// $page_controllers = [];
+//
+// 	// TODO: delete any modified controllers
+// 	debug(["possible modified controllers", $all_controllers]);
+//
+// foreach($all_controllers as $controller) {
+// 	$read_access = true;
+// 	include($controller);
+// 	if(isset($itemtype) && $itemtype === "page") {
+// 		$page_controllers[] = str_replace(LOCAL_PATH."/www", "", $controller);
+// 	}
+// }
 
 
 
@@ -43,55 +41,62 @@ foreach($all_controllers as $controller) {
 	<?= HTML()->renderSnippet("snippets/modules/panel-info.php", [
 		"module" => $module,
 	]) ?>
-
-	// TODO
-	// Make it possible to create multiple controllers here
-	// It will just make duplicates of main module frontend controller
-	// Test if controller already exists as you type
-
-	<h3>Page controllers</h3>
-	<ul class="controllers">
-		<? foreach($page_controllers as $controller): ?>
-		<li><?= $controller ?></li>
-		<? endforeach;	?>
-	</ul>
-
-	<?= $module_class->formStart("modules/updateSettings/item/page", array("class" => "labelstyle:inject")) ?>
-		<fieldset>
-			<?= $module_class->input("new_controller_path", array("label" => "New controller")) ?>
-
-		</fieldset>
-
-		<ul class="actions">
-			<?= $module_class->submit("Save", array("wrapper" => "li.save", "class" => "primary")) ?>
-			<?//= $module_class->link("Cancel", "modules", array("class" => "button key:esc", "wrapper" => "li.cancel")) ?>
-
-			<?= $module_class->oneButtonForm("Restore defaults", "modules/restoreDefaults/item/page", array(
-				"confirm-value" => "Are you sure?",
-				"inputs" => [
-					"default_controller" => $default_controller,
-				],
-				"wrapper" => "li.restore",
-				"class" => "secondary",
-				// "success-location" => "/janitor/admin/member/view/".$user_id
-			)) ?>
-
-		</ul>
-
-	<?= $module_class->formEnd() ?>
-
-	<?= HTML()->formStart("updateSettings") ?>
-		<fieldset>
-			<?= HTML()->input("default_view_path", [
-				"label" => "Default page viewer path",
-				"value" => $module["settings"]["default_view_path"] ?? "",
-			]) ?>
-		</fieldset>
-	<?= HTML()->formEnd() ?>
-
 	<?= HTML()->renderSnippet("snippets/modules/panel-version.php", [
 		"module" => $module,
 	]) ?>
+
+
+	<div class="controllers">
+		<h2>Controllers</h2>
+
+		<p>
+			Controllers are used to access page items and create meaningful urls on your website.
+		</p>
+		<p>
+			Your page items can be accessed via any of your page item controllers by adding the page item sindex to the 
+			controller path, like this: .
+		</p>
+		<code><?= SITE_URL ?>/pages/page-item-sindex</code>
+
+		<h3>Existing page item controllers</h3>
+		<ul class="controllers" 
+			data-csrf-token="<?= session()->value("csrf") ?>"
+			data-delete-action="<?= security()->validPath(HTML()->path."/modules/deleteController/item/page") ?>"
+			data-confirm-value="Are you sure?"
+			data-button-name="delete"
+			data-button-value="Delete"
+		>
+			<? foreach($page_controllers as $controller): ?>
+			<li>
+				<h4><?= $controller ?></h4>
+			</li>
+			<? endforeach;	?>
+		</ul>
+
+		<?= HTML()->formStart("modules/addController/item/page", array("class" => "new labelstyle:inject")) ?>
+			<fieldset>
+				<h3>Add new controller</h3>
+				<p>
+					You can add new controllers to make up the url structure you prefer. Use meaningful names, without special 
+					characters or spaces since these does not work well acroos different platforms. Use - to separate works.
+				</p>
+				<?= HTML()->input("controller_path", [
+					"type" => "string",
+					"label" => "New controller",
+					"required" => true,
+					"pattern" => "^\/[a-z\/]+$",
+					"hint_message" => "State the path/name of the new controller relative to your domain root. Must be lowercase, only a-z and /.",
+					"error_message" => "Controller path is invalid. It must start with / and contain only a-z and /.",
+				]) ?>
+			</fieldset>
+
+			<ul class="actions">
+				<?= HTML()->submit("Add controller", array("wrapper" => "li.save", "class" => "primary")) ?>
+			</ul>
+		<?= HTML()->formEnd() ?>
+
+	</div>
+
 	<?= HTML()->renderSnippet("snippets/modules/panel-upgrade.php", [
 		"module" => $module,
 	]) ?>
