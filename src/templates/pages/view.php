@@ -8,7 +8,8 @@ $sindex = $action[0];
 
 $item = $IC->getItem([
 	"sindex" => $sindex, 
-	"status" => 1, 
+	"status" => 1,
+	"historic" => true,
 	"extend" => [
 		"tags" => true, 
 		"user" => true, 
@@ -19,8 +20,8 @@ $item = $IC->getItem([
 ]);
 
 if($item) {
-	$this->pageTitle($item["name"])
-	$page->bodyClass($item["classname"] || "pages");
+	$this->pageTitle($item["name"]);
+	$this->bodyClass($item["classname"] ? $item["classname"] : "pages");
 	$this->sharingMetaData($item);
 }
 
@@ -30,18 +31,19 @@ if($item) {
 
 
 <? if($item):
-	$media = $IC->sliceMediae($item, "single_media"); ?>
+	$media = $IC->sliceMediae($item, "single_media");
+	 ?>
 
-	<div class="article i:article id:<?= $item["item_id"] ?> service" itemscope itemtype="http://schema.org/Article"
-		data-csrf-token="<?= session()->value("csrf") ?>"
-		data-readstate="<?= $item["readstate"] ?>"
-		data-readstate-add="<?= security()->validPath("/janitor/admin/profile/addReadstate/".$item["item_id"]) ?>" 
-		data-readstate-delete="<?= security()->validPath("/janitor/admin/profile/deleteReadstate/".$item["item_id"]) ?>" 
-		>
+	<div class="article i:article id:<?= $item["item_id"] ?>" itemscope itemtype="http://schema.org/Article"<?= HTML()->jsData(["readstate"]) ?>>
 
-		<? if($media): ?>
+		<?= HTML()->renderSnippet("snippets/media.php", [
+			"item" => $item,
+			"media" => $media,
+		]) ?>
+
+		<? /*if($media): ?>
 		<div class="image item_id:<?= $item["item_id"] ?> format:<?= $media["format"] ?> variant:<?= $media["variant"] ?>"></div>
-		<? endif; ?>
+		<? endif; */ ?>
 
 
 		<?= HTML()->renderSnippet("snippets/tags.php", [
@@ -53,18 +55,11 @@ if($item) {
 		<h1 itemprop="headline"><?= $item["name"] ?></h1>
 
 
-		<?= $HTML->renderSnippet("snippets/info.php", [
+		<?= HTML()->renderSnippet("snippets/info.php", [
 			"item" => $item,
-
-			// TODO
-			// Make dynamic somehow – if controller is not called pages, then what
-
-			// – and if there are more pages controllers, how can cannonical url become unique
-			"url" => "/pages/".$item["sindex"],
 			"media" => $media,
 			"sharing" => true
 		]) ?>
-
 
 
 		<div class="articlebody" itemprop="articleBody">
@@ -72,7 +67,9 @@ if($item) {
 		</div>
 
 
-		<?= $HTML->frontendComments($item, "/janitor/page/addComment") ?>
+		<?= HTML()->renderSnippet("snippets/comments.php", [
+			"item" => $item
+		]) ?>
 
 	</div>
 

@@ -8,7 +8,6 @@ class TypePage extends Itemtype {
 
 
 	public $db;
-	public $views;
 
 
 	/**
@@ -22,14 +21,6 @@ class TypePage extends Itemtype {
 
 		// itemtype database
 		$this->db = SITE_DB.".item_page";
-
-
-		$this->views = [
-			"view" => [
-				"label" => "page",
-				"template" => "pages/view.php",
-			]
-		];
 
 
 		// Published
@@ -50,15 +41,6 @@ class TypePage extends Itemtype {
 			"error_message" => "Title must be filled out."
 		));
 
-		// Secondary headline
-		$this->addToModel("subheader", array(
-			"type" => "string",
-			"label" => "Secondary headline",
-			"searchable" => true,
-			"hint_message" => "Secondary headline of your page.", 
-			"error_message" => "Secondary headline contains illegal characters."
-		));
-
 		// Description
 		$this->addToModel("description", array(
 			"type" => "text",
@@ -73,10 +55,19 @@ class TypePage extends Itemtype {
 			"type" => "html",
 			"label" => "Full page text",
 			"searchable" => true,
-			"allowed_tags" => "p,h2,h3,h4,ul,ol,code,download,jpg,png",
-			"hint_message" => "Write!",
+			"allowed_tags" => "p,h2,h3,h4,ul,ol,code,download,jpg,png,button",
+			"hint_message" => "Write your page content.",
 			"error_message" => "No words? How weird."
 		));
+
+		// Class
+		$this->addToModel("classname", [
+			"type" => "string",
+			"label" => "CSS Class",
+			"pattern" => "[a-z]+[a-z\-\:]*",
+			"hint_message" => "CSS class for custom styling. If you don't know what this is, just leave it empty. Must be a valid, implemented css-classname to have any effect.",
+			"error_message" => "Invalid CSS class syntax",
+		]);
 
 		// Single media
 		$this->addToModel("single_media", array(

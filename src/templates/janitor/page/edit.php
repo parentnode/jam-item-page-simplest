@@ -24,7 +24,6 @@ $item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "
 				<?= $model->input("published_at", array("value" => date("Y-m-d H:i", strtotime($item["published_at"])))) ?>
 
 				<?= $model->input("name", array("value" => $item["name"])) ?>
-				<?= $model->input("subheader", array("value" => $item["subheader"])) ?>
 				<?= $model->input("description", array("class" => "autoexpand short", "value" => $item["description"])) ?>
 				<?= $model->input("html", array("value" => $item["html"])) ?>
 			</fieldset>
@@ -39,12 +38,14 @@ $item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "
 
 	<?= $JML->editMediae($item) ?>
 
-	<?= $JML->editDeveloper($item) ?>
-
 	<?= $JML->editComments($item) ?>
+
+	<?= $JML->editCannonicalUrl($item) ?>
 
 	<?= $JML->editSindex($item) ?>
 
 	<?= $JML->editOwner($item) ?>
+
+	<?= $JML->editDeveloperSettings($item) ?>
 
 </div>

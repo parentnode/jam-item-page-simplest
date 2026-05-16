@@ -3,10 +3,9 @@ CREATE TABLE `SITE_DB`.`item_page` (
   `item_id` int(11) NOT NULL,
 
   `name` varchar(100) NOT NULL,
-  `subheader` varchar(255) NOT NULL DEFAULT '',
   `description` text NOT NULL DEFAULT '',
   `html` text NOT NULL DEFAULT '',
-  `classname` varchar(100) NOT NULL,
+  `classname` varchar(100) DEFAULt NULL,
 
   PRIMARY KEY  (`id`),
   KEY `item_id` (`item_id`),

@@ -1,24 +1,29 @@
 <?php
-$itemtype = "page";
+$controller_itemtype = "page";
+$controller_favors = false;
 
 $access_item["/"] = true;
 $access_item["/owner"] = true;
 $access_item["/updateOwner"] = "/owner";
 
 $access_item["/comments"] = true;
-$access_item["/addComment"] = "/comments";
+$access_item["/deleteComment"] = "/comments";
+$access_item["/updateComment"] = "/comments";
 
 $access_item["/sindex"] = true;
 $access_item["/updateSindex"] = "/sindex";
 $access_item["/checkSindex"] = "/sindex";
+
+$access_item["/cannonical"] = true;
+$access_item["/setCannonicalUrl"] = "/cannonical";
+
 
 $access_item["/tags"] = true;
 $access_item["/addTag"] = "/tags";
 $access_item["/updateTag"] = "/tags";
 $access_item["/deleteTag"] = "/tags";
 
-$access_item["/dev"] = true;
-$access_item["/updateSindex"] = "/sindex";
+$access_item["/developer"] = true;
 
 if(isset($read_access) && $read_access) {
 	return;
@@ -26,7 +31,7 @@ if(isset($read_access) && $read_access) {
 
 include_once($_SERVER["FRAMEWORK_PATH"]."/config/init.php");
 
-
+$itemtype = $controller_itemtype;
 $action = $page->actions();
 $IC = new Items();
 $model = $IC->typeObject($itemtype);
