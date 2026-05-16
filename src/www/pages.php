@@ -14,7 +14,6 @@ include_once($_SERVER["FRAMEWORK_PATH"]."/config/init.php");
 $action = $page->actions();
 
 
-
 // /pages/#sindex#
 if(count($action) == 1) {
 
@@ -29,5 +28,3 @@ $page->page(array(
 	"templates" => "pages/404.php"
 ));
 exit();
-
-?>

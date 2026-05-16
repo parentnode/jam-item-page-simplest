@@ -31,6 +31,7 @@ if(isset($read_access) && $read_access) {
 
 include_once($_SERVER["FRAMEWORK_PATH"]."/config/init.php");
 
+
 $itemtype = $controller_itemtype;
 $action = $page->actions();
 $IC = new Items();
@@ -63,5 +64,3 @@ if(is_array($action) && count($action)) {
 $page->page(array(
 	"templates" => "pages/404.php"
 ));
-
-?>

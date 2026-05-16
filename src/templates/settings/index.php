@@ -3,32 +3,7 @@ global $module_group_id;
 global $module_id;
 
 $module = module()->getModule($module_group_id, $module_id);
-
-// $IC = new Items();
-// $module_class = $IC->typeObject("page");
-
-
-$page_controllers = module()->getItemControllers($module_id);
-
-//
-// $all_controllers = filesystem()->files(LOCAL_PATH."/www", [
-// 	"deny_folders" => "janitor,js,img,assets",
-// 	"allow_extensions" => "php"
-// ]);
-// $page_controllers = [];
-//
-// 	// TODO: delete any modified controllers
-// 	debug(["possible modified controllers", $all_controllers]);
-//
-// foreach($all_controllers as $controller) {
-// 	$read_access = true;
-// 	include($controller);
-// 	if(isset($itemtype) && $itemtype === "page") {
-// 		$page_controllers[] = str_replace(LOCAL_PATH."/www", "", $controller);
-// 	}
-// }
-
-
+$controllers = module()->getItemControllers($module_id);
 
 ?>
 <div class="scene module i:module pageitem i:pageitem">
@@ -66,7 +41,7 @@ $page_controllers = module()->getItemControllers($module_id);
 			data-button-name="delete"
 			data-button-value="Delete"
 		>
-			<? foreach($page_controllers as $controller): ?>
+			<? foreach($controllers as $controller): ?>
 			<li>
 				<h4><?= $controller ?></h4>
 			</li>
@@ -78,7 +53,7 @@ $page_controllers = module()->getItemControllers($module_id);
 				<h3>Add new controller</h3>
 				<p>
 					You can add new controllers to make up the url structure you prefer. Use meaningful names, without special 
-					characters or spaces since these does not work well acroos different platforms. Use - to separate works.
+					characters or spaces since these does not work well acroos different platforms. Use - to separate words.
 				</p>
 				<?= HTML()->input("controller_path", [
 					"type" => "string",

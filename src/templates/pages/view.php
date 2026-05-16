@@ -29,26 +29,20 @@ if($item) {
 
 <div class="scene page i:scene">
 
-
 <? if($item):
-	$media = $IC->sliceMediae($item, "single_media");
-	 ?>
+	$media = $IC->sliceMediae($item, "single_media"); ?>
 
-	<div class="article i:article id:<?= $item["item_id"] ?>" itemscope itemtype="http://schema.org/Article"<?= HTML()->jsData(["readstate"]) ?>>
+	<div class="article i:article id:<?= $item["item_id"] ?> page" itemscope itemtype="http://schema.org/Article"<?= HTML()->jsData(["readstate"]) ?>>
 
 		<?= HTML()->renderSnippet("snippets/media.php", [
 			"item" => $item,
 			"media" => $media,
 		]) ?>
 
-		<? /*if($media): ?>
-		<div class="image item_id:<?= $item["item_id"] ?> format:<?= $media["format"] ?> variant:<?= $media["variant"] ?>"></div>
-		<? endif; */ ?>
-
 
 		<?= HTML()->renderSnippet("snippets/tags.php", [
 			"item" => $item,
-			"context" => ["page"]
+			"context" => [$itemtype]
 		]) ?>
 
 
@@ -66,17 +60,11 @@ if($item) {
 			<?= $item["html"] ?>
 		</div>
 
-
-		<?= HTML()->renderSnippet("snippets/comments.php", [
-			"item" => $item
-		]) ?>
-
 	</div>
 
 <? else: ?>
 
-	<h1>Technology clearly doesn't solve all problems.</h1>
-	<h2>Technology needs humanity.</h2>
+	<h1>Technology is limited</h1>
 	<p>We could not find the specified service.</p>
 
 <? endif; ?>

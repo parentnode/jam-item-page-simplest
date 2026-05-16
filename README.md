@@ -7,7 +7,7 @@ janitor.parentnode.dk is the public face of Janitor. It contains the documentati
 Visit https://janitor.parentnode.dk for more information.
 
 # About parentNode.dk
-parentnode.dk is a Copenhagen based open source project and development agency. 
+parentnode.dk is a Danish open source project and development agency, focusing on supporting sustainability through local community activism.
 
 Visit https://parentnode.dk for more information.
 

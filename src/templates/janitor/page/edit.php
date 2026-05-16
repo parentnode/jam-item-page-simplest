@@ -5,7 +5,7 @@ global $model;
 global $itemtype;
 
 $item_id = $action[1];
-$item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "mediae" => true, "comments" => true, "subscription_method" => true)));
+$item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "mediae" => true)));
 ?>
 <div class="scene i:scene defaultEdit <?= $itemtype ?>Edit">
 	<h1>Edit Page</h1>
@@ -34,11 +34,9 @@ $item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "
 	</div>
 
 
-	<?= $JML->editTags($item) ?>
+	<?= $JML->editTags($item, ["context" => $itemtype]) ?>
 
 	<?= $JML->editMediae($item) ?>
-
-	<?= $JML->editComments($item) ?>
 
 	<?= $JML->editCannonicalUrl($item) ?>
 
