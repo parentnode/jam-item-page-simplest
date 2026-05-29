@@ -1,15 +1,14 @@
 <?php
 global $action;
+global $itemtype;
+
 
 $IC = new Items();
-$itemtype = "page";
-
 $sindex = $action[0];
 
 $item = $IC->getItem([
 	"sindex" => $sindex, 
 	"status" => 1,
-	"historic" => true,
 	"extend" => [
 		"tags" => true, 
 		"user" => true, 
@@ -27,7 +26,7 @@ if($item) {
 
 ?>
 
-<div class="scene page i:scene">
+<div class="scene page i:pageitem">
 
 <? if($item):
 	$media = $IC->sliceMediae($item, "single_media"); ?>
@@ -64,8 +63,10 @@ if($item) {
 
 <? else: ?>
 
-	<h1>Technology is limited</h1>
-	<p>We could not find the specified service.</p>
+	<div class="article">
+		<h1>Technology has limits</h1>
+		<p>We could not find the specified page.</p>
+	</div>
 
 <? endif; ?>
 

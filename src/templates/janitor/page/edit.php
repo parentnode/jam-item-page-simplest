@@ -13,6 +13,8 @@ $item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "
 
 	<?= $JML->editGlobalActions($item) ?>
 
+	<?= $JML->previewUrl($item) ?>
+
 	<?= $JML->editSingleMedia($item, array("label" => "Main page image")) ?>
 
 
@@ -35,8 +37,6 @@ $item = $IC->getItem(array("id" => $item_id, "extend" => array("tags" => true, "
 
 
 	<?= $JML->editTags($item, ["context" => $itemtype]) ?>
-
-	<?= $JML->editMediae($item) ?>
 
 	<?= $JML->editCannonicalUrl($item) ?>
 

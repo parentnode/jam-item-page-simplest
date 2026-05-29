@@ -80,16 +80,6 @@ class TypePage extends Itemtype {
 			"error_message" => "Media does not fit requirements."
 		));
 
-		// Mediae
-		$this->addToModel("mediae", array(
-			"type" => "files",
-			"label" => "Add media here",
-			"max" => 20,
-			"allowed_formats" => "png,jpg,mp4",
-			"hint_message" => "Add images or videos here. Use png, jpg or mp4.",
-			"error_message" => "Media does not fit requirements."
-		));
-
 	}
 
 }

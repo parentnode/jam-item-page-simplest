@@ -1,11 +1,11 @@
 {
-	"version": "0.1.4.1",
+	"version": "0.1.5",
 	"files": [
 		{
 			"type": "class",
 			"src": "classes/type.page.class.php",
 			"dest": "classes/items/type.page.class.php",
-			"digest": "sha256:9b1d86a885d4a8bcbfc3141348cca5654bb5692a1384031a66f006cdc669c364"
+			"digest": "sha256:4de464a75d43a32d2c4a4865685ad68d6bf65dfcaf1afdfa78f91579d37c6ad0"
 		},
 		{
 			"type": "backend-controller",
@@ -17,13 +17,13 @@
 			"type": "backend-template",
 			"src": "templates/janitor/page/list.php",
 			"dest": "templates/janitor/page/list.php",
-			"digest": "sha256:917032be44b4bc147ed29d5e4e6d955eebe96b69faf69286d7fd283e765aa020"
+			"digest": "sha256:72a8e15d373599a6e42e974abf5ec936d71c8868ab03b3ffb0e6885667795645"
 		},
 		{
 			"type": "backend-template",
 			"src": "templates/janitor/page/edit.php",
 			"dest": "templates/janitor/page/edit.php",
-			"digest": "sha256:a445f377bc94afd0ec89156468b7b5a893971cbfa5d9b3380b9a6b6e40cd9adc"
+			"digest": "sha256:4898bd73b16f106408bd2bb646108ccb73ae2100c85b81f7f722038b2b8fbe7a"
 		},
 		{
 			"type": "backend-template",
@@ -53,13 +53,13 @@
 			"type": "controller",
 			"src": "www/pages.php",
 			"dest": "www/pages.php",
-			"digest": "sha256:d5fc7cde09a94bf42613c3bea197381cba6476d126365bc254b10cd5aaa8d339"
+			"digest": "sha256:b7cc63ffb46348c9f5eb367e20cc8d802c788d98791a94e080a1dd5fa825dc25"
 		},
 		{
 			"type": "template",
 			"src": "templates/pages/view.php",
 			"dest": "templates/pages/view.php",
-			"digest": "sha256:80309db485711a38abeef95bb153c33f719d90f79f7337afb3867b10c71bb336"
+			"digest": "sha256:fef3cc528f23b2e5f45e9882d7896645a6f10212bc9008b5cdfaa0cfa286e1fa"
 		},
 		{
 			"type": "data-model",
@@ -69,7 +69,7 @@
 		{
 			"type": "data-install",
 			"src": "config/db/navigation_nodes.sql",
-			"digest": "sha256:6e3cad99b46acfd4c556f53264a92b6f581885d5157bf226b145eadee342b0a8"
+			"digest": "sha256:8a8c45cce5c7d0787275401b5638840821fc3e4df38774f6feb37b435687be8d"
 		},
 		{
 			"type": "data-uninstall",
