@@ -59,7 +59,7 @@
 			"type": "template",
 			"src": "templates/pages/view.php",
 			"dest": "templates/pages/view.php",
-			"digest": "sha256:fef3cc528f23b2e5f45e9882d7896645a6f10212bc9008b5cdfaa0cfa286e1fa"
+			"digest": "sha256:e938150f34c76a45146ebba46323e2a71aff576d862b26f18037557eac8d3413"
 		},
 		{
 			"type": "data-model",

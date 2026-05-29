@@ -13,7 +13,6 @@ $item = $IC->getItem([
 		"tags" => true, 
 		"user" => true, 
 		"mediae" => true, 
-		"comments" => true, 
 		"readstate" => true
 	]
 ]);
