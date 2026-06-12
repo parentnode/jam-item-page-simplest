@@ -1,10 +1,9 @@
 <?php
 global $action;
-global $IC;
 global $model;
 global $itemtype;
 
-$items = $IC->getItems(array("itemtype" => $itemtype, "order" => "status DESC, published_at DESC", "extend" => array("tags" => true, "mediae" => true)));
+$items = items()->getItems(array("itemtype" => $itemtype, "order" => "status DESC, published_at DESC", "extend" => array("tags" => true, "mediae" => true)));
 ?>
 <div class="scene i:scene defaultList <?= $itemtype ?>List">
 	<h1>Pages</h1>

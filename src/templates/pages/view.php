@@ -3,10 +3,9 @@ global $action;
 global $itemtype;
 
 
-$IC = new Items();
 $sindex = $action[0];
 
-$item = $IC->getItem([
+$item = items()->getItem([
 	"sindex" => $sindex, 
 	"status" => 1,
 	"extend" => [
@@ -28,7 +27,7 @@ if($item) {
 <div class="scene page i:pageitem">
 
 <? if($item):
-	$media = $IC->sliceMediae($item, "single_media"); ?>
+	$media = items()->sliceMediae($item, "single_media"); ?>
 
 	<div class="article i:article id:<?= $item["item_id"] ?> page" itemscope itemtype="http://schema.org/Article"<?= HTML()->jsData(["readstate"]) ?>>
 
