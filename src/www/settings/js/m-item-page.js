@@ -1,4 +1,4 @@
-Util.Modules["pageitem"] = new function() {
+Util.Modules["itemPage"] = new function() {
 	this.init = function(div) {
 
 

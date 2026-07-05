@@ -1,4 +1,5 @@
 <?php
+$controller_type = "item";
 $controller_itemtype = "page";
 $controller_favors = ["view" => "page"];
 

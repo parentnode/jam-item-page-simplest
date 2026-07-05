@@ -6,7 +6,7 @@ $module = module()->getModule($module_group_id, $module_id);
 $controllers = module()->getItemControllers($module_id);
 
 ?>
-<div class="scene module i:module pageitem i:pageitem">
+<div class="scene module i:module item-page i:itemPage">
 	<h1>Itemtype page</h1>
 	<h2>Configuration</h2>
 
@@ -31,7 +31,7 @@ $controllers = module()->getItemControllers($module_id);
 			Your page items can be accessed via any of your page item controllers by adding the page item sindex to the 
 			controller path, like this: .
 		</p>
-		<code><?= SITE_URL ?>/pages/page-item-sindex</code>
+		<code><?= SITE_URL ?><?= count($controllers) ? $controllers[0] : "/pages" ?>/page-item-sindex</code>
 
 		<h3>Existing page item controllers</h3>
 		<ul class="controllers" 
@@ -48,7 +48,7 @@ $controllers = module()->getItemControllers($module_id);
 			<? endforeach;	?>
 		</ul>
 
-		<?= HTML()->formStart("modules/addController/item/page", array("class" => "new labelstyle:inject")) ?>
+		<?= HTML()->formStart("modules/addController/item/page", array("class" => "new_controller labelstyle:inject")) ?>
 			<fieldset>
 				<h3>Add new controller</h3>
 				<p>
